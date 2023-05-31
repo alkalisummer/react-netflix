@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios from '../api/axios';
 import "./Row.css";
 import MovieModal from './MovieModal/MovieModal';
@@ -47,12 +47,12 @@ function Row({ isLargeRow, title, id, fetchUrl }) {
       setMovies(request.data.results);
   };
 
-  const handleClick = async (movie) => {
+  const handleClick = useCallback(async (movie) => {
     const movieDetails = await fetchMovie(movie.id, id);
     setMovieSelected(movieDetails.data);
     setModalOpen(true); 
     setMiniModalOpenTrigger(false);
-  };
+  }, []);
 
   const handleMouseEnter = (movie, overYn, event) => {
       setMiniModalMovieId(movie.id);
