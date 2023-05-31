@@ -12,6 +12,12 @@
     margin: 0;
     font-family: "Nanum NetflixSans_W_Bd", sans-serif;
   }
+
+  html, body {
+  width:100%;
+  overflow-x:hidden;
+  }
+
   .app {
     background: #111;
   }
