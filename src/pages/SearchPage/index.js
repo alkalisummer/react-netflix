@@ -103,7 +103,7 @@ function SearchPage () {
           }
         })}
         {
-          modalOpen && <MovieModal {...movieSelected} setModalOpen={setModalOpen}/>
+          modalOpen && <MovieModal {...movieSelected} setModalOpen={setModalOpen} categoryId={categoryId}/>
         }
         {
          miniModalOpen && <MiniModal {...movieSelected}

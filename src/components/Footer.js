@@ -122,7 +122,7 @@ function Footer() {
           </FooterLinkContent>
           <FooterDescrContainer>
             <FooterDescRights>
-              ⓒ Netflex Rights Reserved
+              ⓒ Netflix Rights Reserved
             </FooterDescRights>  
           </FooterDescrContainer>  
         </FooterLinkContainer>
