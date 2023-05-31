@@ -1,5 +1,5 @@
 .row {
-    margin-left: 40px;
+    padding-left: 40px;
     color: white;
   }
   h2 {
@@ -124,6 +124,13 @@
     .row__posterLarge {
       max-height: 280px;
     }
+    .row {
+      padding-left: 1.3rem;
+    }
+    h2 {
+      font-size: 15px;
+    }
+    
   }
   
   .swiper-button-prev {
