@@ -7,6 +7,7 @@ const YouTubeOpts = {
   width: "100%",
   height: 450,
   playerVars : {
+    autoplay : 1,
     rel : 0,
     modestbranding : 1,
     controls : 0,
@@ -39,17 +40,22 @@ function MovieModal({
   setModalOpen
 }) {
   const ref = useRef();
-  useOnClickOutside(ref, () => {setModalOpen(false)})
+  const onPlayerReady = (e) => {
+    e.target.mute();
+    e.target.playVideo();
+  }
 
+  useOnClickOutside(ref, () => {setModalOpen(false)})
+  
   return (
     <div className='presentation'>
       <div className='wrapper-modal'>
         <div className='modal' ref={ref}>
           <span onClick={()=> setModalOpen(false)} className='modal-close'>
-            ✕
+            ⓧ
           </span>
           {officialVideos && officialVideos.length > 0 ? 
-            <YouTube videoId={officialVideos[0].key} opts={YouTubeOpts} onReady={(e) => e.target.playVideo()}></YouTube> :
+            <YouTube videoId={officialVideos[0].key} opts={YouTubeOpts} onReady={(e) => {onPlayerReady(e)}}></YouTube> :
           <img 
             className='modal__poster-img'
             src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}

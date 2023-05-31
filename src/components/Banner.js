@@ -10,6 +10,7 @@ const YouTubeOpts = {
   width: "100%",
   height: 600,
   playerVars : {
+    autoplay: 1,
     rel : 0,
     modestbranding : 1,
     controls : 0,
@@ -66,6 +67,11 @@ function Banner() {
     return str?.length > n ? str.substr(0, n-1) + "..." : str  
   } 
 
+  const onPlayerReady = (e) => {
+    e.target.mute();
+    e.target.playVideo();
+  }
+
   if(!isClicked){
     return (
       <header 
@@ -92,7 +98,7 @@ function Banner() {
     )
   } else {
     return(
-      <YouTube videoId={movie.officialVideos[0].key} opts={YouTubeOpts} onReady={(e) => e.target.playVideo()}></YouTube>
+      <YouTube videoId={movie.officialVideos[0].key} opts={YouTubeOpts} onReady={(e) => onPlayerReady(e)}></YouTube>
     )
   }
 }

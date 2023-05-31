@@ -78,10 +78,11 @@
   .modal-close {
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 65px;
     cursor: pointer;
     z-index: 1000;
     color: white;
+    font-size: x-large;
   }
   @media screen and (max-height: 768px) {
     .wrapper-modal {

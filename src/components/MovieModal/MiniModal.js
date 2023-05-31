@@ -92,16 +92,16 @@ function MiniModal({ id,
           </span>
           {officialVideos && officialVideos.length > 0 ? 
             <Container>
-            <HomeContainer>
-              <Iframe 
-                src={`https://www.youtube.com/embed/${officialVideos[0].key}?controls=0&autoplay=1&loop=1&showinfo=0&mute=1`}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="autoplay; fullscreen;"
-                >
-              </Iframe>
-            </HomeContainer>
-          </Container>
+              <HomeContainer>
+                <Iframe
+                  src={`https://www.youtube.com/embed/${officialVideos[0].key}?controls=0&autoplay=1&loop=1&showinfo=0&mute=1`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen;"
+                  >
+                </Iframe>
+              </HomeContainer>
+            </Container>
             : 
             <img 
               className='mini__modal__poster-img'
