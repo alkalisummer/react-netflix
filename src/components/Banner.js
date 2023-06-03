@@ -9,6 +9,7 @@ import './Banner.css';
 
 const YouTubeOpts = {
   width: '100%',
+  height: 500,
   playerVars: {
     autoplay: 1,
     rel: 0,
@@ -128,7 +129,7 @@ function Banner() {
 
   const handleVideoSize = () => {
     let $videoIframe = document.getElementById(movie.id);
-    let responsiveHeight = $videoIframe.offsetWidth * 0.3625;
+    let responsiveHeight = 600;
     $videoIframe.setAttribute('height', responsiveHeight);
 
     //브라우저 리사이즈 시 iframe 높이값 비율에 맞게 세팅
