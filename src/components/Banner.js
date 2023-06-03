@@ -9,7 +9,6 @@ import './Banner.css';
 
 const YouTubeOpts = {
   width: '100%',
-  height: 600,
   playerVars: {
     autoplay: 1,
     rel: 0,
@@ -122,8 +121,21 @@ function Banner() {
   };
 
   const onPlayerReady = (e) => {
+    handleVideoSize();
     e.target.mute();
     e.target.playVideo();
+  };
+
+  const handleVideoSize = () => {
+    let $videoIframe = document.getElementById(movie.id);
+    let responsiveHeight = $videoIframe.offsetWidth * 0.3625;
+    $videoIframe.setAttribute('height', responsiveHeight);
+
+    //브라우저 리사이즈 시 iframe 높이값 비율에 맞게 세팅
+    window.addEventListener('resize', function () {
+      responsiveHeight = $videoIframe.offsetWidth * 0.3625;
+      $videoIframe.setAttribute('height', responsiveHeight);
+    });
   };
 
   if (!isClicked) {
@@ -169,6 +181,8 @@ function Banner() {
       <YouTube
         videoId={movie.officialVideos[0].key}
         opts={YouTubeOpts}
+        id={movie.id}
+        style={{ paddingTop: 70 }}
         onReady={(e) => onPlayerReady(e)}></YouTube>
     );
   }
