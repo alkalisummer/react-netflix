@@ -33,6 +33,7 @@
   .banner--fadeBottom {
     height: 1.4rem !important;
     position: absolute;
+    width: 92%;
   }
 
   .banner__genre {
