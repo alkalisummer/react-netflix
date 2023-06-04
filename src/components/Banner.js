@@ -122,21 +122,8 @@ function Banner() {
   };
 
   const onPlayerReady = (e) => {
-    handleVideoSize();
     e.target.mute();
     e.target.playVideo();
-  };
-
-  const handleVideoSize = () => {
-    let $videoIframe = document.getElementById(movie.id);
-    let responsiveHeight = 600;
-    $videoIframe.setAttribute('height', responsiveHeight);
-
-    //브라우저 리사이즈 시 iframe 높이값 비율에 맞게 세팅
-    window.addEventListener('resize', function () {
-      responsiveHeight = $videoIframe.offsetWidth * 0.3625;
-      $videoIframe.setAttribute('height', responsiveHeight);
-    });
   };
 
   if (!isClicked) {
