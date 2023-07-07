@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from '../api/axios';
-import "./Row.css";
+import './Row.css';
 import MovieModal from './MovieModal/MovieModal';
 import MiniModal from './MovieModal/MiniModal';
 import fetchMovie from '../api/fetchMovie';
@@ -11,27 +11,26 @@ import { A11y, Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-
 function Row({ isLargeRow, title, id, fetchUrl }) {
-  
   const [movies, setMovies] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [miniModalOpen, setMiniModalOpen] = useState(false);
   const [miniModalOpenTrigger, setMiniModalOpenTrigger] = useState(false);
   const [movieSelected, setMovieSelected] = useState({});
-  const [miniModalMovieId, setMiniModalMovieId] = useState("");
+  const [categorySelected, setCategorySelected] = useState(id);
+  const [miniModalMovieId, setMiniModalMovieId] = useState('');
   const [modalTop, setModalTop] = useState(0);
   const [modalLeft, setModalLeft] = useState(0);
   const [swiperTrans, setSwiperTrans] = useState(0);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchMovieData();
   }, []);
 
-  useEffect(()=>{
-    const handler = setTimeout( async ()=>{
-      if(miniModalMovieId && !modalOpen){
-        const movieDetails = await fetchMovie(miniModalMovieId, id);
+  useEffect(() => {
+    const handler = setTimeout(async () => {
+      if (miniModalMovieId && !modalOpen) {
+        const movieDetails = await fetchMovie(miniModalMovieId, categorySelected);
         setMovieSelected(movieDetails.data);
         setMiniModalOpen(miniModalOpenTrigger);
       }
@@ -39,39 +38,42 @@ function Row({ isLargeRow, title, id, fetchUrl }) {
 
     return () => {
       clearTimeout(handler);
-    }
-  }, [miniModalOpenTrigger, miniModalMovieId])
+    };
+  }, [miniModalOpenTrigger, miniModalMovieId]);
 
   const fetchMovieData = async () => {
-      const request = await axios.get(fetchUrl);
-      setMovies(request.data.results);
+    const request = await axios.get(fetchUrl);
+    const resultData = request.data.results.filter((obj) => obj.backdrop_path && obj.poster_path);
+    setMovies(resultData);
   };
 
   const handleClick = useCallback(async (movie) => {
-    const movieDetails = await fetchMovie(movie.id, id);
+    setCategorySelected(movie.media_type ? movie.media_type.toUpperCase() : id);
+    const movieDetails = await fetchMovie(movie.id, movie.media_type ? movie.media_type.toUpperCase() : id);
     setMovieSelected(movieDetails.data);
-    setModalOpen(true); 
+    setModalOpen(true);
     setMiniModalOpenTrigger(false);
   }, []);
 
   const handleMouseEnter = (movie, overYn, event) => {
-      setMiniModalMovieId(movie.id);
-      setMiniModalOpenTrigger(overYn);
-      setModalTop(event.target.offsetParent.offsetParent.offsetParent.offsetTop);
-      setModalLeft(event.target.offsetParent.offsetLeft - Math.abs(swiperTrans));
+    setMiniModalMovieId(movie.id);
+    setMiniModalOpenTrigger(overYn);
+    setCategorySelected(movie.media_type ? movie.media_type.toUpperCase() : id);
+    setModalTop(event.target.offsetParent.offsetParent.offsetParent.offsetTop);
+    setModalLeft(event.target.offsetParent.offsetLeft - Math.abs(swiperTrans));
   };
 
   const handleMouseLeave = (overYn) => {
-    if(!miniModalOpen){
+    if (!miniModalOpen) {
       setMiniModalOpenTrigger(overYn);
     }
-  }
+  };
 
   return (
-    <section className="row">
+    <section className='row'>
       <h2>{title}</h2>
       <Swiper
-        id = {id}
+        id={id}
         spaceBetween={7}
         modules={[A11y, Navigation]}
         navigation
@@ -83,30 +85,31 @@ function Row({ isLargeRow, title, id, fetchUrl }) {
           },
           998: {
             slidesPerView: 5,
-            slidesPerGroup: 5
+            slidesPerGroup: 5,
           },
           625: {
             slidesPerView: 4,
-            slidesPerGroup: 4
+            slidesPerGroup: 4,
           },
           0: {
             slidesPerView: 3,
-            slidesPerGroup: 3
+            slidesPerGroup: 3,
           },
         }}
         onSlideChange={(swiper) => {
           setSwiperTrans(Math.round(swiper.translate));
-        }}
-      >
-        <div id={id} className="row__posters">
-          {movies.map(obj=>(
-            <SwiperSlide key = {obj.id}>
-              <img 
-                id = {obj.id}
-                className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+        }}>
+        <div
+          id={id}
+          className='row__posters'>
+          {movies.map((obj) => (
+            <SwiperSlide key={obj.id}>
+              <img
+                id={obj.id}
+                className={`row__poster ${isLargeRow && 'row__posterLarge'}`}
                 src={`https://image.tmdb.org/t/p/original/${isLargeRow ? obj.poster_path : obj.backdrop_path}`}
                 alt={obj.name}
-                onClick={()=> handleClick(obj)}
+                onClick={() => handleClick(obj)}
                 onMouseEnter={(e) => handleMouseEnter(obj, true, e)}
                 onMouseLeave={() => handleMouseLeave(false)}
               />
@@ -114,22 +117,27 @@ function Row({ isLargeRow, title, id, fetchUrl }) {
           ))}
         </div>
       </Swiper>
-        {
-          miniModalOpen && <MiniModal {...movieSelected}
-                                      miniModalOpen={miniModalOpen}
-                                      setMiniModalOpen={setMiniModalOpen} 
-                                      setMiniModalMovieId={setMiniModalMovieId} 
-                                      setBigModalOpen={handleClick}
-                                      categoryId={id} 
-                                      modalTop={modalTop}
-                                      modalLeft={modalLeft}
-          />
-        }
-        {
-          modalOpen && <MovieModal {...movieSelected} setModalOpen={setModalOpen} categoryId={id}/>
-        }
+      {miniModalOpen && (
+        <MiniModal
+          {...movieSelected}
+          miniModalOpen={miniModalOpen}
+          setMiniModalOpen={setMiniModalOpen}
+          setMiniModalMovieId={setMiniModalMovieId}
+          setBigModalOpen={handleClick}
+          categoryId={categorySelected}
+          modalTop={modalTop}
+          modalLeft={modalLeft}
+        />
+      )}
+      {modalOpen && (
+        <MovieModal
+          {...movieSelected}
+          setModalOpen={setModalOpen}
+          categoryId={categorySelected}
+        />
+      )}
     </section>
-  )
+  );
 }
 
 export default React.memo(Row);
