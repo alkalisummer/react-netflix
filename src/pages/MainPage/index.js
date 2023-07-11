@@ -19,7 +19,7 @@ function MainPage() {
         fetchUrl={requests.fetchTrending}
       />
       <Row
-        title='공걔 예정 콘텐츠'
+        title='공개 예정 콘텐츠'
         id='TR'
         fetchUrl={requests.fetchUpcoming}
       />

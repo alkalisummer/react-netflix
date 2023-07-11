@@ -80,8 +80,8 @@ function Row({ isLargeRow, title, id, fetchUrl }) {
         loop={true}
         breakpoints={{
           1378: {
-            slidesPerView: 6,
-            slidesPerGroup: 6,
+            slidesPerView: 6.5,
+            slidesPerGroup: 6.5,
           },
           998: {
             slidesPerView: 5,

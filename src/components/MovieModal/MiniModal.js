@@ -44,17 +44,6 @@ function MiniModal({ id, officialVideos, backdrop_path, popularity, release_date
     left: modalLeft,
   };
 
-  const YouTubeOpts = {
-    width: 400,
-    height: 230,
-    playerVars: {
-      rel: 0,
-      modestbranding: 1,
-      controls: 0,
-      loop: 1,
-    },
-  };
-
   const handleMouseOut = (outYn) => {
     setMiniModalOpen(outYn);
     setMiniModalMovieId('');
@@ -99,7 +88,7 @@ function MiniModal({ id, officialVideos, backdrop_path, popularity, release_date
 
           <div className='mini__modal__content'>
             <p className='mini__modal__details'>
-              <span className='mini__modal__user-perc'>{`조회수 ${popularity.toFixed(0)}회`}</span>
+              <span className='mini__modal__user-perc'>{`인지도 ${popularity.toFixed(0)}점`}</span>
               <span className='mini__modal__release-date'>{release_date ? release_date.substr(0, 4) : first_air_date.substr(0, 4)}</span>
               <span className='mini__modal__episode-num'>{categoryId === 'TV' ? '시즌' + number_of_seasons + ' 에피소드 ' + number_of_episodes + '개' : runtimeFunc(runtime)}</span>
               <span
