@@ -1,23 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
 @font-face {
   font-family: 'NetflixSans_W_Bd';
-  src : url('../public/fonts/NetflixSans_W_Bd.woff2') format(woff2)
+  src: url('../public/fonts/NetflixSans_W_Bd.woff2') format(woff2);
 }
 
 @font-face {
   font-family: 'NetflixSans_W_Lt';
-  src : url('../public/fonts/NetflixSans_W_Lt.woff2') format(woff2)
+  src: url('../public/fonts/NetflixSans_W_Lt.woff2') format(woff2);
 }
- * {
-    margin: 0;
-    font-family: "Nanum NetflixSans_W_Bd", sans-serif;
-  }
 
-  html, body {
-  width:100%;
-  overflow-x:hidden;
-  }
+* {
+  margin: 0;
+  font-family: 'Nanum NetflixSans_W_Bd', sans-serif;
+}
 
-  .app {
-    background: #111;
-  }
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.app {
+  background: #111;
+}

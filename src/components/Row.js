@@ -44,6 +44,10 @@ function Row({ isLargeRow, title, id, fetchUrl }) {
   const fetchMovieData = async () => {
     const request = await axios.get(fetchUrl);
     const resultData = request.data.results.filter((obj) => obj.backdrop_path && obj.poster_path);
+    if (id === 'TV') {
+      resultData.splice(10);
+    }
+
     setMovies(resultData);
   };
 
@@ -71,17 +75,19 @@ function Row({ isLargeRow, title, id, fetchUrl }) {
 
   return (
     <section className='row'>
-      <h2>{title}</h2>
+      <div className={`row__title__div ${isLargeRow ? 'row__poster__title' : ''}`}>
+        <span className='row__title'>{title}</span>
+      </div>
       <Swiper
         id={id}
-        spaceBetween={7}
+        spaceBetween={isLargeRow ? 15 : 7}
         modules={[A11y, Navigation]}
         navigation
         loop={true}
         breakpoints={{
           1378: {
-            slidesPerView: 6.5,
-            slidesPerGroup: 6.5,
+            slidesPerView: isLargeRow ? 5 : 6.5,
+            slidesPerGroup: 5,
           },
           998: {
             slidesPerView: 5,
@@ -102,8 +108,9 @@ function Row({ isLargeRow, title, id, fetchUrl }) {
         <div
           id={id}
           className='row__posters'>
-          {movies.map((obj) => (
+          {movies.map((obj, idx) => (
             <SwiperSlide key={obj.id}>
+              {isLargeRow ? <span className='row__rank'>{idx + 1}</span> : <></>}
               <img
                 id={obj.id}
                 className={`row__poster ${isLargeRow && 'row__posterLarge'}`}

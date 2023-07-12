@@ -57,7 +57,7 @@ function Banner() {
 
     @media screen and (min-width: 1500px) {
       position: relative;
-      height: 600px;
+      height: 700px;
     }
 
     @media screen and (max-width: 768px) {

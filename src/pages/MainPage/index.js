@@ -8,7 +8,7 @@ function MainPage() {
     <div>
       <Banner />
       <Row
-        title='TV 프로그램'
+        title='TV TOP 10 시리즈'
         id='TV'
         fetchUrl={requests.fetchNetfilxOriginals}
         isLargeRow
