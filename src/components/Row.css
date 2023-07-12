@@ -124,12 +124,12 @@
   font-size: 137px;
   line-height: 22rem;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 900;
+  font-weight: 800;
   color: #cdcdcd;
   height: 212px;
   padding-left: 50px;
 }
-.swiper-slide {
+.row__swiper {
   display: flex !important;
   justify-content: space-around;
 }
@@ -162,11 +162,15 @@
   }
 
   .row__rank {
-    font-size: 58px;
-    line-height: 18rem;
+    font-size: 28px;
+    line-height: 1.5rem;
     height: 169px;
-    padding-left: 29px;
-    margin-right: -7px;
+    margin-right: 5px;
+    padding-left: 34px;
+  }
+
+  #TV .swiper-wrapper .swiper-slide {
+    margin-right: 40px !important;
   }
 }
 

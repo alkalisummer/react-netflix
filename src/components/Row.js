@@ -110,16 +110,18 @@ function Row({ isLargeRow, title, id, fetchUrl }) {
           className='row__posters'>
           {movies.map((obj, idx) => (
             <SwiperSlide key={obj.id}>
-              {isLargeRow ? <span className='row__rank'>{idx + 1}</span> : <></>}
-              <img
-                id={obj.id}
-                className={`row__poster ${isLargeRow && 'row__posterLarge'}`}
-                src={`https://image.tmdb.org/t/p/original/${isLargeRow ? obj.poster_path : obj.backdrop_path}`}
-                alt={obj.name}
-                onClick={() => handleClick(obj)}
-                onMouseEnter={(e) => handleMouseEnter(obj, true, e)}
-                onMouseLeave={() => handleMouseLeave(false)}
-              />
+              <div className={`row__swiper ${isLargeRow && idx === 9 && 'row__poster_lasidx'}`}>
+                {isLargeRow ? <span className='row__rank'>{idx + 1}</span> : <></>}
+                <img
+                  id={obj.id}
+                  className={`row__poster ${isLargeRow && 'row__posterLarge'}`}
+                  src={`https://image.tmdb.org/t/p/original/${isLargeRow ? obj.poster_path : obj.backdrop_path}`}
+                  alt={obj.name}
+                  onClick={() => handleClick(obj)}
+                  onMouseEnter={(e) => handleMouseEnter(obj, true, e)}
+                  onMouseLeave={() => handleMouseLeave(false)}
+                />
+              </div>
             </SwiperSlide>
           ))}
         </div>
