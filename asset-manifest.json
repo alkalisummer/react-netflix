@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-netflix-clone/static/css/main.0d0f56a7.css",
-    "main.js": "/react-netflix-clone/static/js/main.a4a199db.js",
-    "static/media/NetflixSans_W_Bd.woff2": "/react-netflix-clone/static/media/NetflixSans_W_Bd.2cd128d8209cae108cbe.woff2",
-    "static/media/NetflixSans_W_Lt.woff2": "/react-netflix-clone/static/media/NetflixSans_W_Lt.fd2365013929182277eb.woff2",
-    "index.html": "/react-netflix-clone/index.html",
-    "main.0d0f56a7.css.map": "/react-netflix-clone/static/css/main.0d0f56a7.css.map",
-    "main.a4a199db.js.map": "/react-netflix-clone/static/js/main.a4a199db.js.map"
+    "main.css": "/react-netflix/static/css/main.9bee8b33.css",
+    "main.js": "/react-netflix/static/js/main.6f83c9d0.js",
+    "static/media/NetflixSans_W_Bd.woff2": "/react-netflix/static/media/NetflixSans_W_Bd.2cd128d8209cae108cbe.woff2",
+    "static/media/NetflixSans_W_Lt.woff2": "/react-netflix/static/media/NetflixSans_W_Lt.fd2365013929182277eb.woff2",
+    "index.html": "/react-netflix/index.html",
+    "main.9bee8b33.css.map": "/react-netflix/static/css/main.9bee8b33.css.map",
+    "main.6f83c9d0.js.map": "/react-netflix/static/js/main.6f83c9d0.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d0f56a7.css",
-    "static/js/main.a4a199db.js"
+    "static/css/main.9bee8b33.css",
+    "static/js/main.6f83c9d0.js"
   ]
 }
