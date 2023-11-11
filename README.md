@@ -36,19 +36,19 @@ React 기반의 Netflix 메인화면을 벤치마킹하여 만든 어플리케�
 
 ## 주요 기능
 
-#### 1. TOP 10 TV 시리즈 순위 제공
+#### 1. TOP 10 TV 시리즈 순위 제공 및 카테고리별 배너탭 구현 
 
 <div align="center">
   
 ![ezgif com-gif-maker](https://github.com/alkalisummer/react-netflix/assets/47405224/d8de3093-433e-49a6-999f-9f8282d62a2e)
 
 </div>
-- The Movie Database API 에서 현재 방영중인 TV시리즈의 데이터 가져와서 인지도순으로 10위까지 표출합니다.
+- The Movie Database API 에서 현재 방영중인 TV시리즈의 데이터 가져와서 인지도순으로 10위까지 표출하고 카테고리별 배너 탭이 표출됩니다.
 
 <br/>
 <br/>
 
-#### 2. 마우스 오버시 모달 팝업 표출
+#### 2. Youtube 모듈을 활용한 마우스 오버 이벤트 
 
 <div align="center">
 
@@ -56,7 +56,7 @@ React 기반의 Netflix 메인화면을 벤치마킹하여 만든 어플리케�
 
 </div>
 
-- 포스터에 마우스를 오버하면 미니모달이 표출되고 상세정보 클릭시 더 큰 모달에서 상세정보를 볼 수 있습니다.
+- Youtube 모듈을 활용하여 포스터에 마우스를 오버시 모달이 팝업되어 관련 youtube 영상을 표출합니다. 
 
 <br/>
 <br/>
